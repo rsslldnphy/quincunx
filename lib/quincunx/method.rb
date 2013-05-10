@@ -54,8 +54,14 @@ module Quincunx
         params.last.is_a?(Hash) ? params.last.fetch(:when) : ->{ true }
       end
 
+      def is_guard?(param)
+        param.is_a?(Hash) && param.keys == [:when]
+      end
+
       def matchers
-        @matchers ||= params.take_while { |p| p.is_a? Array }
+        @matchers ||= (is_guard?(params.last) ? params[0..-2] : params).map do |p|
+          p.is_a?(Array) ? p : [p]
+        end
       end
 
     end

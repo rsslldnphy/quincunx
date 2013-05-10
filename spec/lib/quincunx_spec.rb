@@ -1,12 +1,10 @@
 require 'spec_helper'
 
-Person = Struct.new(:name)
-
 describe Quincunx do
 
   let (:test_class) {
     Class.new do
-      extend Quincunx
+      include Quincunx
 
       define :speak, [:cat] do
         :miaow
@@ -38,16 +36,16 @@ describe Quincunx do
     end
 
     it "can match on class" do
-      russell = Person.new("russell")
+      russell = Person.new("russell", 29)
       subject.speak(russell).should eq :hello
     end
 
     it "doesn't match if the number of args is wrong" do
-      expect { subject.speak(:cat, :dog) }.to raise_error NoMethodError
+      expect { subject.speak(:cat, :dog) }.to raise_error Quincunx::NoMatchForPatternError
     end
 
     it "binds the arg to a variable if the 'as' keyword is used" do
-      russell = Person.new("russell")
+      russell = Person.new("russell", 29)
       subject.introduce(russell).should eq "hi, i'm russell"
     end
   end

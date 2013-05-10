@@ -1,7 +1,5 @@
 module Quincunx
 
-  Anything = Object
-
   class Extractor
 
     def initialize(matcher, value)

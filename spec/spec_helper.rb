@@ -11,4 +11,20 @@ RSpec.configure do |config|
   config.color_enabled = true
 end
 
-Cat = Struct.new(:name, :type)
+class Cat
+  def initialize(name, type)
+    @name = name
+    @type = type
+  end
+
+  attr_reader :name, :type
+end
+
+class Person
+  def initialize(name, age)
+    @name = name
+    @age = age
+  end
+
+  attr_reader :name, :age
+end
