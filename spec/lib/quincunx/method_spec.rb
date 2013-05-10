@@ -12,5 +12,9 @@ module Quincunx
     it 'can be compared to an array of args' do
       method.should === [:cat, :dog]
     end
+
+    it 'should not match a different array' do
+      method.should_not === [:cat, :cat]
+    end
   end
 end

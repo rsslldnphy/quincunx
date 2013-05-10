@@ -5,9 +5,12 @@ require_relative 'quincunx/all'
 module Quincunx
 
   def define name, *args, &body
-    cases = dictionary.add(name, args, body)
-    define_method name do |*args|
-      cases.match(args).call
+    cases = dictionary[name] << Method.new(args, body)
+    define_method name do |*args, &block|
+      cases.match(args).match do |m|
+        m.some { |body| body.call(*args) }
+        m.none { method_missing name, *args, &block }
+      end
     end
   end
 

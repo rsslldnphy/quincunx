@@ -5,14 +5,13 @@ module Quincunx
 
     let (:dictionary) { Dictionary.new }
 
-    it 'defaults entries for methods as empty arrays' do
-      dictionary[:foo].should eq []
+    it 'adds methods to the dictionary' do
+      dictionary[:foo] << Method.new(:bar, :baz)
+      dictionary[:foo].should be_a CaseList
     end
 
-    it 'allows adding methods' do
-      dictionary[:foo] << :bar
-      dictionary[:foo] << :baz
-      dictionary[:foo].should eq [:bar, :baz]
+    it 'defaults case lists to empty' do
+      dictionary[:quux].should be_a CaseList
     end
   end
 end

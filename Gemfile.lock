@@ -10,7 +10,7 @@ GEM
     diff-lcs (1.2.4)
     json (1.7.7)
     multi_json (1.7.3)
-    optional (0.0.4)
+    optional (0.0.5)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
