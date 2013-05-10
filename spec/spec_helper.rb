@@ -10,3 +10,5 @@ RSpec.configure do |config|
   config.order = :rand
   config.color_enabled = true
 end
+
+Cat = Struct.new(:name, :type)

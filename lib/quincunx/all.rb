@@ -1,3 +1,6 @@
 require_relative 'dictionary'
 require_relative 'case_list'
+require_relative 'environment'
 require_relative 'method'
+require_relative 'extractor'
+require_relative 'builder'

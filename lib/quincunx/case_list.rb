@@ -5,8 +5,8 @@ module Quincunx
       cases << method ; self
     end
 
-    def match(args)
-      Option[cases.find { |method| method === args }]
+    def match(obj, args)
+      Option[cases.map { |method| method.application(obj, args) }.find(&:matches?)]
     end
 
     private

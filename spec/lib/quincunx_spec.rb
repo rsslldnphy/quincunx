@@ -20,6 +20,10 @@ describe Quincunx do
         :hello
       end
 
+      define :introduce, [Person, as: :person] do
+        "hi, i'm #{person.name}"
+      end
+
     end
   }
 
@@ -38,6 +42,14 @@ describe Quincunx do
       subject.speak(russell).should eq :hello
     end
 
+    it "doesn't match if the number of args is wrong" do
+      expect { subject.speak(:cat, :dog) }.to raise_error NoMethodError
+    end
+
+    it "binds the arg to a variable if the 'as' keyword is used" do
+      russell = Person.new("russell")
+      subject.introduce(russell).should eq "hi, i'm russell"
+    end
   end
 
 end
