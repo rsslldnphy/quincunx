@@ -11,7 +11,9 @@ module Quincunx
     end
 
     def ===(args)
-      matchers.zip(args).all? { |(a,b)| a == b }
+      matchers.zip(args).all? do |(a,b)|
+        a.first === b
+      end
     end
 
     private
