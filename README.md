@@ -1,6 +1,6 @@
-= Quincunx
+# Quincunx
 
-== A ridiculous Gem that brings Erlang style pattern-matching to Ruby
+### A ridiculous Gem that brings Erlang style pattern-matching to Ruby
 
 One of the things I love the most about functional programming, and that I miss having in Ruby, is pattern matching. The ability to both assert on the content and structure of a variable while also ‘de-structuring’ it - pulling it apart to get out the bits you’re interested in - is both phenomenally cool and phenomenally powerful.
 
